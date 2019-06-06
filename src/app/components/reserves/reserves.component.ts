@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HourDayService} from '../../services/hour.day.service';
+import {HourDay} from '../../domain/hour.day';
+import {Day} from '../../domain/day';
 
 @Component({
   selector: 'app-reserves',
@@ -7,21 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservesComponent implements OnInit {
 
-  public options = ['Lionel Messi', 'Juan Etchart', 'Roberto Carlos'];
+  public hourDaysMonday: HourDay[] = new Array();
+  public days: Day[];
+  public reserves: HourDay[];
 
-  public reserves = [
-    {day: 'Monday', hour1: 'NO', hour2: 'NO', hour3: 'YES'},
-    {day: 'Tuesday', hour1: 'NO', hour2: 'YES', hour3: 'NO'},
-    {day: 'Wendesney', hour1: 'NO', hour2: 'NO', hour3: 'NO'},
-    {day: 'Thursday', hour1: 'NO', hour2: 'NO', hour3: 'NO'},
-    {day: 'Friday', hour1: 'YES', hour2: 'YES', hour3: 'YES'},
-    {day: 'Saturday', hour1: 'NO', hour2: 'NO', hour3: 'NO'},
-    {day: 'Sunday', hour1: 'YES', hour2: 'NO', hour3: 'YES'}
-  ];
-
-  constructor() { }
+  constructor(private _hourDaysService: HourDayService) { }
 
   ngOnInit() {
+    //this.hours = this._hourDaysService.getHours();
+    //this.reserves = this._hourDaysService.getDayHoursByDay(1);
+    this.days = this._hourDaysService.getDays();
+    this.days
+      .forEach(
+        day => {
+          if (day.description === 'Monday') {
+            this.hourDaysMonday = this._hourDaysService.getHourDayByDay(day.id);
+          }
+        }
+      );
+    console.log("Days: ", this.days);
+    console.log("Hours for Monday: ", this.hourDaysMonday);
   }
 
 }

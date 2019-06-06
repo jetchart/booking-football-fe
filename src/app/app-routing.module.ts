@@ -3,11 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import {IndexComponent} from './components/index/index.component';
 import {ReservesComponent} from './components/reserves/reserves.component';
 import {ContactComponent} from './components/contact/contact.component';
+import {UserListComponent} from './components/user-list/user-list.component';
+import {UserEditComponent} from './components/user-edit/user-edit.component';
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent },
   { path: 'reserves', component: ReservesComponent },
-  { path: 'contact', component: ContactComponent }
+  { path: 'contact', component: ContactComponent },
+  { path: 'userList', component: UserListComponent },
+  { path: 'userEdit', component: UserEditComponent }
 ];
 
 @NgModule({

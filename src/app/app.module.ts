@@ -12,6 +12,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { ReservesComponent } from './components/reserves/reserves.component';
 import { ContactComponent } from './components/contact/contact.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {HourDayService} from './services/hour.day.service';
+import { UserListComponent } from './components/user-list/user-list.component';
+import {UserService} from './services/user.service';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     IndexComponent,
     HeaderComponent,
     ReservesComponent,
-    ContactComponent
+    ContactComponent,
+    UserListComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +39,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatSelectModule,
     MatIconModule,
     MatMenuModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    AngularFontAwesomeModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [HourDayService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

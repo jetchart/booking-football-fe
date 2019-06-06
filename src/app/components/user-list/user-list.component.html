@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Users</h3>
+    </div>
+    <div class="col text-right">
+      <a routerLink="/userEdit"><i class="fa fa-2x fa-plus"></i></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor ="let user of users">
+          <td>{{user.username}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.surname}}</td>
+          <td>
+            <i class="fa fa-align-justify"></i>&nbsp;&nbsp;
+            <i class="fa fa-edit"></i>&nbsp;&nbsp;
+            <i class="fa fa-remove"></i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
