@@ -4,34 +4,46 @@
       <h3>Users</h3>
     </div>
     <div class="col text-right">
-      <a routerLink="/userEdit"><i class="fa fa-2x fa-plus"></i></a>
+      <button mat-icon-button (click)="openModalNewUser()"><i class="fa fa-2x fa-plus"></i></button>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <thead class="thead-dark">
-        <tr>
-          <th scope="col">Username</th>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor ="let user of users">
-          <td>{{user.username}}</td>
-          <td>{{user.name}}</td>
-          <td>{{user.surname}}</td>
-          <td>
-            <i class="fa fa-align-justify"></i>&nbsp;&nbsp;
-            <i class="fa fa-edit"></i>&nbsp;&nbsp;
-            <i class="fa fa-remove"></i>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+ <hr>
+
+  <table mat-table [dataSource]="users" class="mat-elevation-z8">
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Surname Column -->
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef> Surname </th>
+      <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button><i class="fa fa-align-justify"></i></button>&nbsp;&nbsp;
+        <button mat-icon-button (click)="openModal(element)"><i class="fa fa-edit"></i></button>&nbsp;&nbsp;
+        <button mat-icon-button><i class="fa fa-remove"></i></button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
 </div>
+
+

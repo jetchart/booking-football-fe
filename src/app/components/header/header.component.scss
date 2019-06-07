@@ -2,9 +2,14 @@
   /*position: fixed;
   margin-bottom: 20px;
   width: 100%;*/
+  width: 100%;
   z-index: 999;
   margin-bottom: 20px;
   -webkit-box-shadow:0px 2px 2px #060cfe;
   -moz-box-shadow:0px 2px 2px #060cfe;
   box-shadow:0px 2px 2px #060cfe;
+}
+
+.header-height {
+  height: 70px;
 }
