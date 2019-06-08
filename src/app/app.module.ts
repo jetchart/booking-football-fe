@@ -3,9 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatButtonModule, MatDatepickerIntl, MatIconModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatDatepickerIntl,
+  MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatSelectModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { IndexComponent } from './components/index/index.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { HeaderComponent } from './components/header/header.component';
@@ -24,6 +31,22 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {SnackBarService} from './services/snack-bar-service';
+import {MatCardModule} from '@angular/material/card';
+import { DummyComponent } from './components/dummy/dummy.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {AngularFireModule} from "@angular/fire";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {AngularFireAuthModule} from "@angular/fire/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDAigbBN2xFu8L0dsu49TADqTVtPdWFLiU",
+  authDomain: "booking-football.firebaseapp.com",
+  databaseURL: "https://booking-football.firebaseio.com",
+  projectId: "booking-football",
+  storageBucket: "booking-football.appspot.com",
+  messagingSenderId: "569178031067",
+  appId: "1:569178031067:web:97bee066aa28fdc9"
+};
 
 @NgModule({
   declarations: [
@@ -33,7 +56,8 @@ import {SnackBarService} from './services/snack-bar-service';
     ReservesComponent,
     ContactComponent,
     UserListComponent,
-    UserEditComponent
+    UserEditComponent,
+    DummyComponent
   ],
   imports: [
     BrowserModule,
@@ -50,11 +74,19 @@ import {SnackBarService} from './services/snack-bar-service';
     MatDialogModule,
     MatGridListModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [HourDayService, UserService, SnackBarService],
+  providers: [HourDayService, UserService, SnackBarService, MatDatepickerModule],
   bootstrap: [AppComponent],
   entryComponents: [UserEditComponent]
 })

@@ -13,19 +13,22 @@ export class UserService {
     let user = new User();
     user.name = 'Juan';
     user.surname = 'Etchart';
-    user.username = 'jetchart';
+    user.email = 'jetchart@gmail.com';
+    user.birthday = new Date();
     list.push(user);
 
     user = new User();
     user.name = 'Lionel';
     user.surname = 'Messi';
-    user.username = 'lmessi';
+    user.email = 'lmessi@@gmail.com';
+    user.birthday = new Date();
     list.push(user);
 
     user = new User();
     user.name = 'Roberto';
     user.surname = 'Carlos';
-    user.username = 'rcarlos';
+    user.email = 'rcarlos@@gmail.com';
+    user.birthday = new Date();
     list.push(user);
 
     return list;

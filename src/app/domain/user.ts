@@ -5,8 +5,8 @@ export class User {
   private _id: number;
   private _name: string;
   private _surname: string;
-  private _username: string;
-  //private _birthday: moment;
+  private _email: string;
+  private _birthday: Date;
 
 
   get id(): number {
@@ -33,20 +33,20 @@ export class User {
     this._surname = value;
   }
 
-  get username(): string {
-    return this._username;
+  get email(): string {
+    return this._email;
   }
 
-  set username(value: string) {
-    this._username = value;
+  set email(value: string) {
+    this._email = value;
   }
 
- /* get birthday(): moment {
+  get birthday(): Date {
     return this._birthday;
   }
 
-  set birthday(value: moment) {
+  set birthday(value: Date) {
     this._birthday = value;
-  }*/
+  }
 
 }

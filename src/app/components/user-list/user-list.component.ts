@@ -4,6 +4,7 @@ import {User} from '../../domain/user';
 import {MatDialog, MatDialogConfig, MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {UserEditComponent} from '../user-edit/user-edit.component';
 import {SnackBarService} from '../../services/snack-bar-service';
+import {NavigationExtras, Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-list',
@@ -16,30 +17,30 @@ export class UserListComponent implements OnInit {
   public displayedColumns: string[] = ['username', 'name', 'surname', 'actions'];
 
     constructor(private _userService: UserService,
-                private dialog: MatDialog,
-                private _snakBarService: SnackBarService) { }
+                private dialog: MatDialog) { }
 
   ngOnInit() {
     this.users = this._userService.getUsers();
   }
 
-  public openModalNewUser() {
-    this.openModal(new User());
-  }
-
-  public openModal(user) {
+  public openModal(isNew: boolean, user?: User) {
+    if (isNew){
+     user = new User();
+    }
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '800px';
-    dialogConfig.height = '600px';
+    //dialogConfig.width = '800px';
+    //dialogConfig.height = '600px';
     dialogConfig.data = user;
 
     const dialogRef = this.dialog.open(UserEditComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
+      if (!isNew){
+        user = result;
+      }
       console.log(result);
-      this._snakBarService.openSnackBarSuccess('Saved!', 'X');
     });
 
   }

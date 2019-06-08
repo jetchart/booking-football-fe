@@ -1,14 +1,15 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~font-awesome/css/font-awesome.css";
 
-.je-container {
-  display: flex;
-  flex-direction: column;
+body {
+  background-color: #FCF9F8 !important;
 }
 
-.je-container > * {
-  width: 100%;
+.custom-card {
+  width: 80%;
+  margin: 40px auto;
 }
+
 
 
 .success-snackbar {
@@ -17,12 +18,23 @@
   .mat-button-wrapper {
     color: rgba(255,255,255,.7) !important;
   }
+
 }
 
 .error-snackbar {
-  background-color: red !important;
+  background-color: maroon !important;
+
+  .mat-button-wrapper {
+    color: rgba(255,255,255,.7) !important;
+  }
+
 }
 
 .warning-snackbar {
-  background-color: yellow !important;
+  background-color: khaki !important;
+
+  .mat-button-wrapper {
+    color: rgba(255,255,255,.7) !important;
+  }
+
 }
