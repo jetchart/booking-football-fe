@@ -3,35 +3,24 @@ import {HourDay} from '../domain/hour.day';
 import {Day} from '../domain/day';
 import {Booking} from '../domain/booking';
 import {User} from '../domain/user';
+import {AngularFireDatabase} from "@angular/fire/database";
 
 @Injectable()
 export class UserService {
 
-  public getUsers(): User[]{
-    let list: User[] = new Array();
+  constructor(private _db: AngularFireDatabase) {
+  }
 
-    let user = new User();
-    user.name = 'Juan';
-    user.surname = 'Etchart';
-    user.email = 'jetchart@gmail.com';
-    user.birthday = new Date();
-    list.push(user);
+  public getUsers(): Promise<firebase.database.DataSnapshot> {
+    return this._db.database.ref('users').once('value');
+  }
 
-    user = new User();
-    user.name = 'Lionel';
-    user.surname = 'Messi';
-    user.email = 'lmessi@@gmail.com';
-    user.birthday = new Date();
-    list.push(user);
+  public save(user: User): Promise<any>{
+    return this._db.database.ref('users/' + user.id).set(user);
+  }
 
-    user = new User();
-    user.name = 'Roberto';
-    user.surname = 'Carlos';
-    user.email = 'rcarlos@@gmail.com';
-    user.birthday = new Date();
-    list.push(user);
-
-    return list;
+  public delete(id: number): Promise<any>{
+    return this._db.database.ref('users/' + id).remove();
   }
 
 }

@@ -37,6 +37,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {AngularFireAuthModule} from "@angular/fire/auth";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDAigbBN2xFu8L0dsu49TADqTVtPdWFLiU",
@@ -84,7 +85,8 @@ const firebaseConfig = {
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatProgressSpinnerModule
   ],
   providers: [HourDayService, UserService, SnackBarService, MatDatepickerModule],
   bootstrap: [AppComponent],
