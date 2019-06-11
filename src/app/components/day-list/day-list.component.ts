@@ -33,7 +33,6 @@ export class DayListComponent implements OnInit {
   public showDayHours(day: Day) {
     this._dayHourService.getDayHours(day.id).subscribe(dayHour => {
       this.dayHours = dayHour;
-      console.log(dayHour);
     });
   }
 
