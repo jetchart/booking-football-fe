@@ -51,10 +51,10 @@ export class UserEditComponent implements OnInit {
       this.user.id = this._id ? this._id : new Date().getTime();
       this._userService.save(this.user)
         .then(r => {
-          this._snakBarService.openSnackBarSuccess('Saved!', 'X');
+          this._snakBarService.openSnackBarSuccess('Saved!');
           this.dialogRef.close(this.user);
         })
-        .catch(r => this._snakBarService.openSnackBarError(r, 'X'));
+        .catch(error => this._snakBarService.openSnackBarError(error));
     }
   }
 

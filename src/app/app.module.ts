@@ -38,6 +38,9 @@ import {AngularFireModule} from "@angular/fire";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {AngularFireAuthModule} from "@angular/fire/auth";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DayListComponent } from './components/day-list/day-list.component';
+import { DayModalComponent } from './components/day-modal/day-modal.component';
+import { DayHourModalComponent } from './components/day-hour-modal/day-hour-modal.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDAigbBN2xFu8L0dsu49TADqTVtPdWFLiU",
@@ -58,7 +61,10 @@ const firebaseConfig = {
     ContactComponent,
     UserListComponent,
     UserEditComponent,
-    DummyComponent
+    DummyComponent,
+    DayListComponent,
+    DayModalComponent,
+    DayHourModalComponent
   ],
   imports: [
     BrowserModule,

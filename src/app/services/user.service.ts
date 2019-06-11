@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HourDay} from '../domain/hour.day';
-import {Day} from '../domain/day';
-import {Booking} from '../domain/booking';
 import {User} from '../domain/user';
 import {AngularFireDatabase} from "@angular/fire/database";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class UserService {
@@ -11,8 +9,8 @@ export class UserService {
   constructor(private _db: AngularFireDatabase) {
   }
 
-  public getUsers(): Promise<firebase.database.DataSnapshot> {
-    return this._db.database.ref('users').once('value');
+  public getUsers(): Observable<any[]>{
+    return this._db.list('users').valueChanges();
   }
 
   public save(user: User): Promise<any>{

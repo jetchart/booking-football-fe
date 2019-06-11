@@ -8,25 +8,25 @@ export class SnackBarService {
 
   constructor(private _snackBar: MatSnackBar) { }
 
-  openSnackBarSuccess(message: string, action: string, duration?: number) {
-    this._openSnackBar(message, action, 'success-snackbar', duration);
+  openSnackBarSuccess(message: string, duration?: number) {
+    this._openSnackBar(message, 'success-snackbar', duration);
   }
 
-  openSnackBarError(message: string, action: string, duration?: number) {
-    this._openSnackBar(message, action, 'error-snackbar', duration);
+  openSnackBarError(message: string, duration?: number) {
+    this._openSnackBar(message, 'error-snackbar', duration);
   }
 
-  openSnackBarWarning(message: string, action: string, duration?: number) {
-    this._openSnackBar(message, action, 'warning-snackbar', duration);
+  openSnackBarWarning(message: string, duration?: number) {
+    this._openSnackBar(message, 'warning-snackbar', duration);
   }
 
-  private _openSnackBar(message: string, action: string, clazz: string, duration?: number) {
+  private _openSnackBar(message: string, clazz: string, duration?: number) {
     let config = new MatSnackBarConfig();
     if (duration) {
       config.duration = duration;
     }
     config.panelClass = [clazz];
-    this._snackBar.open(message, action, config);
+    this._snackBar.open(message, 'X', config);
   }
 
 }

@@ -43,7 +43,6 @@ export class UserListComponent implements OnInit {
         user = result;
       }
       console.log(result);
-      this._getUsers();
     });
   }
 
@@ -51,11 +50,10 @@ export class UserListComponent implements OnInit {
     this.isLoading = true;
       this._userService.delete(id)
         .then(r => {
-          this._getUsers();
-          this._snakBarService.openSnackBarSuccess('Deleted!', 'X');
+          this._snakBarService.openSnackBarSuccess('Deleted!');
         })
-        .catch(r => {
-          this._snakBarService.openSnackBarError(r, 'X');
+        .catch(error => {
+          this._snakBarService.openSnackBarError(error);
           this.isLoading = false;
         });
   }
@@ -64,19 +62,16 @@ export class UserListComponent implements OnInit {
     this.isLoading = true;
     this.users.data = new Array();
     this._userService.getUsers()
-      .then(v => {
-        v.forEach(i => {
-          let user = (<User>i.toJSON());
-          this.users.data.push(user);
-          console.log(this.users.data);
-          this.users.connect().next(this.users.data);
+      .subscribe(
+        v => {
+        this.users.data = v;
+        console.log(v);
+        this.users.connect().next(this.users.data);
+        this.isLoading = false;
+      }, error => {
+          this._snakBarService.openSnackBarError(error);
           this.isLoading = false;
         });
-      })
-      .catch(r => {
-        this._snakBarService.openSnackBarError(r, 'X');
-        this.isLoading = false;
-      });
   }
 
 }

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Day</h3>
+    </div>
+  </div>
+
+  <hr>
+
+  <div>
+    <form class="form" [formGroup]="form" (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-5">
+          <mat-form-field>
+            <input matInput placeholder="Description" formControlName="description" required>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <input matInput placeholder="Enabled" formControlName="enabled" required>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <input matInput placeholder="Order" formControlName="order" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <hr>
+      <div mat-dialog-actions>
+        <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Save</button>
+        <button mat-raised-button (click)="closeModal()">Close</button>
+      </div>
+    </form>
+  </div>
+
+</div>
