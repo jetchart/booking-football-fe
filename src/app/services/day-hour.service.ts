@@ -12,7 +12,7 @@ export class DayHourService {
   }
 
   public getDayHours(dayId: number): Observable<any[]> {
-    return this._db.list('dayHours/',ref => ref.orderByChild('dayId').equalTo(dayId.toString())).valueChanges();
+    return this._db.list('dayHours/',ref => ref.orderByChild('dayId').equalTo(dayId)).valueChanges();
   }
 
   public save(day: Day): Promise<any> {
