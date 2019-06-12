@@ -1,6 +1,6 @@
 import {Day} from './day';
 
-export class HourDay {
+export class DayHour {
 
   private _id: number;
   private _dayId: number;

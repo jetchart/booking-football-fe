@@ -41,6 +41,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { DayListComponent } from './components/day-list/day-list.component';
 import { DayModalComponent } from './components/day-modal/day-modal.component';
 import { DayHourModalComponent } from './components/day-hour-modal/day-hour-modal.component';
+import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDAigbBN2xFu8L0dsu49TADqTVtPdWFLiU",
@@ -92,7 +94,9 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatChipsModule
   ],
   providers: [HourDayService, UserService, SnackBarService, MatDatepickerModule],
   bootstrap: [AppComponent],
